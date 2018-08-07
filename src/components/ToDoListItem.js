@@ -1,11 +1,21 @@
 import React from 'react';
 
-const ToDoListItem = (props) => (
-  <div>
-    <p>{props.toDoTitle}</p>
-    <button>Remove</button>
-    <button>Done</button>
-  </div>
-);
-
-export default ToDoListItem;
+export default class ToDoListItem extends React.Component {
+  state = {
+    done: false
+  };
+  handleDoneTrigger = () => {
+    this.setState((prevState) => ({ done: !prevState.done }));
+  };
+  render() {
+    return (
+      <div>
+        <p
+          className={this.state.done ? "done" : ""}
+        >{this.props.toDoTitle}</p>
+        <button>Remove</button>
+        <button onClick={this.handleDoneTrigger}>Done</button>
+      </div>
+    );
+  }
+};
