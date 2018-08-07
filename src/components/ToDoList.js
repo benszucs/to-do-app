@@ -1,13 +1,14 @@
 import React from 'react';
 import ToDoListItem from './ToDoListItem';
 
-const ToDoList = () => (
+const ToDoList = (props) => (
   <div>
     <h3>To Do List</h3>
-    <ul>
-      <ToDoListItem />
-      <ToDoListItem />
-    </ul>
+    <div>
+      {props.toDos.map((toDo) => {
+        return <ToDoListItem key={toDo} toDoTitle={toDo}/>;
+      })}
+    </div>
   </div>
 );
 

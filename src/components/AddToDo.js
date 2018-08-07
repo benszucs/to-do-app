@@ -1,10 +1,33 @@
 import React from 'react';
 
-const AddToDo = () => (
-  <div>
-    <input type="text"/>
-    <button>Add To Do</button>
-  </div>
-);
+export default class AddToDo extends React.Component {
+  state = {
+    error: undefined
+  };
+  handleAddToDo = (e) => {
+    e.preventDefault();
 
-export default AddToDo;
+    const toDo = e.target.elements.toDo.value.trim();
+    const error = this.props.handleAddToDo(toDo);
+
+    this.setState(() => ({ error }));
+
+    if (!error) {
+      e.target.elements.toDo.value = "";
+    }
+  };
+  render () {
+    return (
+      <div>
+        {this.state.error && <p>{this.state.error}</p>}
+        <form
+          onSubmit={this.handleAddToDo}
+        >
+
+          <input type="text" name="toDo"/>
+          <button>Add To Do</button>
+        </form>
+      </div>
+    );
+  }
+};

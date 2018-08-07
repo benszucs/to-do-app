@@ -8,15 +8,27 @@ import ListButtons from './ListButtons';
 
 export default class ToDoApp extends React.Component {
   state = {
-
+    toDos: []
+  };
+  handleAddToDo = (toDo) => {
+    if (!toDo) {
+      return "Nothing was added!";
+    }
+    this.setState((prevState) => ({
+      toDos: prevState.toDos.concat([toDo])
+    }));
   };
   render() {
     return (
       <div>
         <Header />
-        <AddToDo />
+        <AddToDo
+          handleAddToDo={this.handleAddToDo}
+        />
         <FilterToDo />
-        <ToDoList />
+        <ToDoList
+          toDos={this.state.toDos}
+        />
         <ListButtons />
       </div>
     );

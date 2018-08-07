@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ToDoListItem = () => (
-  <li>
-    <p>To Do List Item</p>
+const ToDoListItem = (props) => (
+  <div>
+    <p>{props.toDoTitle}</p>
     <button>Remove</button>
     <button>Done</button>
-  </li>
+  </div>
 );
 
 export default ToDoListItem;
