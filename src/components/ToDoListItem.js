@@ -13,7 +13,9 @@ export default class ToDoListItem extends React.Component {
         <p
           className={this.state.done ? "done" : ""}
         >{this.props.toDoTitle}</p>
-        <button>Remove</button>
+        <button onClick={(e) => {
+          this.props.handleRemoveToDo(this.props.index)
+        }}>Remove</button>
         <button onClick={this.handleDoneTrigger}>Done</button>
       </div>
     );

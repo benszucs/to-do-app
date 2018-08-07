@@ -18,6 +18,11 @@ export default class ToDoApp extends React.Component {
       toDos: prevState.toDos.concat([toDo])
     }));
   };
+  handleRemoveToDo = (removeIndex) => {
+    this.setState((prevState) => ({
+      toDos: prevState.toDos.filter((toDo, index) => index !== removeIndex)
+    }));
+  };
   render() {
     return (
       <div>
@@ -28,6 +33,7 @@ export default class ToDoApp extends React.Component {
         <FilterToDo />
         <ToDoList
           toDos={this.state.toDos}
+          handleRemoveToDo={this.handleRemoveToDo}
         />
         <ListButtons />
       </div>
