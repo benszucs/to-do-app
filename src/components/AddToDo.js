@@ -23,7 +23,6 @@ export default class AddToDo extends React.Component {
         <form
           onSubmit={this.handleAddToDo}
         >
-
           <input type="text" name="toDo"/>
           <button>Add To Do</button>
         </form>

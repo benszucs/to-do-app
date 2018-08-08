@@ -1,5 +1,6 @@
 import React from 'react';
 import ToDoListItem from './ToDoListItem';
+import shortid from 'shortid';
 
 const ToDoList = (props) => (
   <div>
@@ -7,7 +8,7 @@ const ToDoList = (props) => (
     <div>
       {props.toDos.map((toDo , index) => (
         <ToDoListItem
-          key={index}
+          key={shortid.generate()}
           index={index}
           toDoTitle={toDo}
           handleRemoveToDo={props.handleRemoveToDo}

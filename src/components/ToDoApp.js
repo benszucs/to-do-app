@@ -23,6 +23,13 @@ export default class ToDoApp extends React.Component {
       toDos: prevState.toDos.filter((toDo, index) => index !== removeIndex)
     }));
   };
+  handleFilter = (newFilter) => {
+    let updatedToDos = this.state.toDos;
+    updatedToDos = updatedToDos.filter((toDo) => {
+      return toDo.search(newFilter) !== -1;
+    });
+    this.setState(() => ({ toDos: updatedToDos}))
+  };
   render() {
     return (
       <div>
@@ -30,7 +37,9 @@ export default class ToDoApp extends React.Component {
         <AddToDo
           handleAddToDo={this.handleAddToDo}
         />
-        <FilterToDo />
+        <FilterToDo
+          handleFilter={this.handleFilter}
+        />
         <ToDoList
           toDos={this.state.toDos}
           handleRemoveToDo={this.handleRemoveToDo}

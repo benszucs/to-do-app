@@ -1,9 +1,27 @@
 import React from 'react';
 
-const FilterToDo = () => (
-  <div>
-    <input type="text" placeholder="Filter"/>
-  </div>
-);
+export default class FilterToDo extends React.Component {
+  handleFilter = (e) => {
+    e.preventDefault();
 
-export default FilterToDo;
+    const filter = e.target.value;
+    this.props.handleFilter(filter);
+  };
+  render() {
+    return (
+      <div>
+        <input
+          type="text"
+          placeholder="Filter"
+          name="filter"
+          onChange={this.handleFilter}
+        />
+      </div>
+    );
+  };
+};
+
+// refactor filter to do
+// add event handler to recognise input value
+// fire that value off to top level handler .toLowerCase()
+// there array.filter to display matches
