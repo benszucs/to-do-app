@@ -32,6 +32,24 @@ export default class ToDoApp extends React.Component {
   onChangeFilter = (newFilter) => {
     this.setState(() => ({ filter: newFilter }))
   };
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem('toDos');
+      const toDos = JSON.parse(json);
+
+      if (toDos) {
+        this.setState(() => ({toDos}));
+      }
+    } catch (e) {
+
+    }
+  };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.toDos.length !== this.state.toDos.length) {
+      const json = JSON.stringify(this.state.toDos);
+      localStorage.setItem('toDos', json);
+    }
+  };
   render() {
     let list = this.state.toDos.filter(toDo => toDo.title.toLowerCase().includes(this.state.filter.toLowerCase()));
     return (
