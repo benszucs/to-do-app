@@ -4,8 +4,8 @@ export default class FilterToDo extends React.Component {
   handleFilter = (e) => {
     e.preventDefault();
 
-    const filter = e.target.value;
-    this.props.handleFilter(filter);
+    const filter = e.target.value.trim();
+    this.props.onChangeFilter(filter);
   };
   render() {
     return (

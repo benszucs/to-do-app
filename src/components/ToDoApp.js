@@ -6,31 +6,34 @@ import FilterToDo from './FilterToDo';
 import ToDoList from './ToDoList';
 import ListButtons from './ListButtons';
 
+import shortid from 'shortid';
+
 export default class ToDoApp extends React.Component {
   state = {
-    toDos: []
+    toDos: [],
+    filter: ""
   };
   handleAddToDo = (toDo) => {
     if (!toDo) {
       return "Nothing was added!";
     }
     this.setState((prevState) => ({
-      toDos: prevState.toDos.concat([toDo])
+      toDos: prevState.toDos.concat([{
+        title: toDo,
+        index: shortid.generate()
+      }])
     }));
   };
   handleRemoveToDo = (removeIndex) => {
     this.setState((prevState) => ({
-      toDos: prevState.toDos.filter((toDo, index) => index !== removeIndex)
+      toDos: prevState.toDos.filter((toDo) => toDo.index !== removeIndex)
     }));
   };
-  handleFilter = (newFilter) => {
-    let updatedToDos = this.state.toDos;
-    updatedToDos = updatedToDos.filter((toDo) => {
-      return toDo.search(newFilter) !== -1;
-    });
-    this.setState(() => ({ toDos: updatedToDos}))
+  onChangeFilter = (newFilter) => {
+    this.setState(() => ({ filter: newFilter }))
   };
   render() {
+    let list = this.state.toDos.filter(toDo => toDo.title.toLowerCase().includes(this.state.filter.toLowerCase()));
     return (
       <div>
         <Header />
@@ -38,10 +41,10 @@ export default class ToDoApp extends React.Component {
           handleAddToDo={this.handleAddToDo}
         />
         <FilterToDo
-          handleFilter={this.handleFilter}
+          onChangeFilter={this.onChangeFilter}
         />
         <ToDoList
-          toDos={this.state.toDos}
+          toDos={list}
           handleRemoveToDo={this.handleRemoveToDo}
         />
         <ListButtons />
