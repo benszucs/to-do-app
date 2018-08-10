@@ -29,6 +29,29 @@ export default class ToDoApp extends React.Component {
       toDos: prevState.toDos.filter((toDo) => toDo.index !== removeIndex)
     }));
   };
+  handleClearAll = () => {
+    this.setState(() => ({ toDos: [] }))
+  };
+  handleResetList = () => {
+    this.setState(() => ({
+      toDos: [{
+        title: "Finish Andrew Mead's React/Redux course",
+        index: shortid.generate()
+      },
+      {
+        title: "Learn how to deploy apps (Heroku/Firebase)",
+        index: shortid.generate()
+      },
+      {
+        title: "Get more familiar with Webpack",
+        index: shortid.generate()
+      },
+      {
+        title: "Start Node.js/Express/MongoDB course on Udemy",
+        index: shortid.generate()
+      }]
+    }));
+  };
   onChangeFilter = (newFilter) => {
     this.setState(() => ({ filter: newFilter }))
   };
@@ -36,7 +59,6 @@ export default class ToDoApp extends React.Component {
     try {
       const json = localStorage.getItem('toDos');
       const toDos = JSON.parse(json);
-
       if (toDos) {
         this.setState(() => ({toDos}));
       }
@@ -50,6 +72,7 @@ export default class ToDoApp extends React.Component {
       localStorage.setItem('toDos', json);
     }
   };
+
   render() {
     let list = this.state.toDos.filter(toDo => toDo.title.toLowerCase().includes(this.state.filter.toLowerCase()));
     return (
@@ -65,7 +88,10 @@ export default class ToDoApp extends React.Component {
           toDos={list}
           handleRemoveToDo={this.handleRemoveToDo}
         />
-        <ListButtons />
+        <ListButtons
+          handleClearAll={this.handleClearAll}
+          handleResetList={this.handleResetList}
+        />
       </div>
     );
   };

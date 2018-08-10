@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ListButtons = () => (
+const ListButtons = (props) => (
   <div>
-    <button>Clear</button>
-    <button>Reset</button>
+    <button onClick={props.handleClearAll}>Clear</button>
+    <button onClick={props.handleResetList}>Reset</button>
   </div>
 );
 
