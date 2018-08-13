@@ -18,13 +18,17 @@ export default class AddToDo extends React.Component {
   };
   render () {
     return (
-      <div>
+      <div className="mr-1">
         {this.state.error && <p>{this.state.error}</p>}
         <form
           onSubmit={this.handleAddToDo}
         >
-          <input type="text" name="toDo"/>
-          <button>Add To Do</button>
+          <input
+            type="text"
+            name="toDo"
+            className="form--input mr-1"
+          />
+          <button className="button">Add To Do</button>
         </form>
       </div>
     );

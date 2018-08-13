@@ -1,0 +1,20 @@
+.to-do-items {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $s-size;
+  border-radius: 16px;
+  &:hover {
+    background: $off-white;
+  }
+}
+
+.to-do--text {
+  color: lighten(black, 20%);
+}
+
+.to-do--title {
+  color: $orange;
+  font-size: $l-size;
+  text-align:
+  center;
+}

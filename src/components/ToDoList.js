@@ -3,8 +3,8 @@ import ToDoListItem from './ToDoListItem';
 import shortid from 'shortid';
 
 const ToDoList = (props) => (
-  <div>
-    <h3>To Do List</h3>
+  <div className="mt-1">
+    {/* <h3 className="to-do--title">To Do List</h3> */}
     <div>
       {props.toDos.map((toDo) => (
         <ToDoListItem

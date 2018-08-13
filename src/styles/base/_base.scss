@@ -5,6 +5,7 @@ html {
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: $m-size;
+  background: $off-white;
 }
 
 button {
@@ -15,6 +16,10 @@ button:disabled {
   cursor: default;
 }
 
-.done {
-  text-decoration: line-through;
+.mr-1 {
+  margin-right: $s-size;
+}
+
+.mt-1 {
+  margin-top: $l-size;
 }

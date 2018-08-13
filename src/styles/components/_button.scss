@@ -1,0 +1,23 @@
+.button {
+  background: $orange;
+  color: $off-white;
+  padding: $s-size;
+  border: none;
+  border-radius: 16px;
+  &:hover {
+    background: $off-white;
+    color: $orange;
+  }
+}
+
+.button-mod {
+  font-weight: bold;
+  background: none;
+  padding: 0;
+  color: lighten(black, 20%);
+  font-size: $m-size;
+  &:hover {
+    background: none;
+    color: $orange;
+  }
+}

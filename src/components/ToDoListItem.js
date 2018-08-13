@@ -3,12 +3,14 @@ import React from 'react';
 export default class ToDoListItem extends React.Component {
   render() {
     return (
-      <div>
-        <p>{this.props.toDoTitle}</p>
-        <button onClick={(e) => {
+      <div className="to-do-items">
+        <p className="to-do--text">{this.props.toDoTitle}</p>
+        <button
+          className="button button-mod"
+          onClick={(e) => {
           this.props.handleRemoveToDo(this.props.index)
         }}>
-          Remove
+          X
         </button>
       </div>
     );

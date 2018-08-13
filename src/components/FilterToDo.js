@@ -15,6 +15,7 @@ export default class FilterToDo extends React.Component {
           placeholder="Filter"
           name="filter"
           onChange={this.handleFilter}
+          className="form--input"
         />
       </div>
     );

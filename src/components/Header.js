@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Header = () => (
-  <div>
-    <h1>To Do App</h1>
-    <h3>What to do today...</h3>
+  <div className="header">
+    <h1 className="header--title">To-Do App</h1>
+    <h3 className="header--subtitle">Just another (boring) to-do app</h3>
   </div>
 );
 

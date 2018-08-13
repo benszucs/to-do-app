@@ -78,20 +78,24 @@ export default class ToDoApp extends React.Component {
     return (
       <div>
         <Header />
-        <AddToDo
-          handleAddToDo={this.handleAddToDo}
-        />
-        <FilterToDo
-          onChangeFilter={this.onChangeFilter}
-        />
-        <ToDoList
-          toDos={list}
-          handleRemoveToDo={this.handleRemoveToDo}
-        />
-        <ListButtons
-          handleClearAll={this.handleClearAll}
-          handleResetList={this.handleResetList}
-        />
+        <div className="container">
+          <div className="form">
+            <AddToDo
+              handleAddToDo={this.handleAddToDo}
+            />
+            <FilterToDo
+              onChangeFilter={this.onChangeFilter}
+            />
+          </div>
+          <ToDoList
+            toDos={list}
+            handleRemoveToDo={this.handleRemoveToDo}
+          />
+          <ListButtons
+            handleClearAll={this.handleClearAll}
+            handleResetList={this.handleResetList}
+          />
+        </div>
       </div>
     );
   };
