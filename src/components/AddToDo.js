@@ -19,7 +19,6 @@ export default class AddToDo extends React.Component {
   render () {
     return (
       <div className="mr-1">
-        {this.state.error && <p>{this.state.error}</p>}
         <form
           onSubmit={this.handleAddToDo}
         >
@@ -30,6 +29,7 @@ export default class AddToDo extends React.Component {
           />
           <button className="button">Add To Do</button>
         </form>
+        {this.state.error && <p className="to-do--text">{this.state.error}</p>}
       </div>
     );
   }
