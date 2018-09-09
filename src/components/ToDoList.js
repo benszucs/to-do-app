@@ -12,7 +12,8 @@ const ToDoList = (props) => (
           index={toDo.index}
           toDoTitle={toDo.title}
           handleRemoveToDo={props.handleRemoveToDo}
-          handleDoneTrigger={props.handleDoneTrigger}
+          handleToggleDone={props.handleToggleDone}
+          done={toDo.done}
         />))}
     </div>
   </div>

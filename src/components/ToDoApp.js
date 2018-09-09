@@ -20,9 +20,18 @@ export default class ToDoApp extends React.Component {
     this.setState((prevState) => ({
       toDos: prevState.toDos.concat([{
         title: toDo,
-        index: shortid.generate()
+        index: shortid.generate(),
+        done: false
       }])
     }));
+  };
+  handleToggleDone = (doneIndex) => {
+    for (let id in this.state.toDos) {
+      if (this.state.toDos[id].index === doneIndex) {
+        this.state.toDos[id].done = !this.state.toDos[id].done;
+        this.forceUpdate();
+      }
+    }
   };
   handleRemoveToDo = (removeIndex) => {
     this.setState((prevState) => ({
@@ -36,19 +45,23 @@ export default class ToDoApp extends React.Component {
     this.setState(() => ({
       toDos: [{
         title: "Finish Andrew Mead's React/Redux course",
-        index: shortid.generate()
+        index: shortid.generate(),
+        done: true,
       },
       {
         title: "Learn how to deploy apps (Heroku/Firebase)",
-        index: shortid.generate()
+        index: shortid.generate(),
+        done: false
       },
       {
         title: "Get more familiar with Webpack",
-        index: shortid.generate()
+        index: shortid.generate(),
+        done: false
       },
       {
         title: "Start Node.js/Express/MongoDB course on Udemy",
-        index: shortid.generate()
+        index: shortid.generate(),
+        done: false
       }]
     }));
   };
@@ -90,6 +103,7 @@ export default class ToDoApp extends React.Component {
           <ToDoList
             toDos={list}
             handleRemoveToDo={this.handleRemoveToDo}
+            handleToggleDone={this.handleToggleDone}
           />
           <ListButtons
             handleClearAll={this.handleClearAll}
