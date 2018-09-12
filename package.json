@@ -1,6 +1,10 @@
 {
   "name": "boilerplate",
   "version": "1.0.0",
+  "engines": {
+    "node": "9.10.0",
+    "yarn": "1.7.0"
+  },
   "main": "index.js",
   "author": "Ben Szucs",
   "license": "MIT",
